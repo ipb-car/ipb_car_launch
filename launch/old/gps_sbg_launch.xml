@@ -1,0 +1,20 @@
+<launch>
+  <!-- Output: `log` / `screen` -->
+  <arg name="output" value="screen" />
+  
+  <group>
+    <machine
+      name="raspberry-pi"
+      address="192.168.1.200"
+      user="pi-docker"
+      env-loader="/home/pi-docker/catkin_ws/devel/env.sh"
+      ssh-port="2222"
+      default="true"
+    />
+  
+    <node ns="gps/sbg" name="sbg_device" pkg="sbg_driver" type="sbg_device" output="$(arg output)">
+    <rosparam command="load" file="$(find ipb_car_launch)/config/gps/sbg_config.yaml" />
+    <param name="dump" command="cp $(find ipb_car_launch)/config/gps/sbg_config.yaml $(env ROS_HOME)/config/sbg_config.yaml" />
+    </node>
+  </group>
+</launch>

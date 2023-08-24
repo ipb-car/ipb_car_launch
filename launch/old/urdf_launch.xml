@@ -1,0 +1,4 @@
+<?xml version="1.0"?>
+<launch>
+        <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" launch-prefix="bash -c 'rosrun ipb_car_hardware create_urdf.py; rosparam load $(find ipb_car_hardware)/config/ipb_car.urdf robot_description; $0 $@' "/>
+</launch>
