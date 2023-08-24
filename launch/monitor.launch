@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<launch>
+    <rosparam command="load" file="$(find ipb_car_launch)/config/topics_to_monitor.yaml" ns="/topics_to_monitor" />
+    <arg name="output" value="screen" />
+    <node name="monitor" pkg="ipb_car_monitor" type="monitor.py" output="$(arg output)" />
+</launch>

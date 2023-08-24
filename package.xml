@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<package format="2">
+  <name>ipb_car_launch</name>
+  <version>0.0.1</version>
+  <description>
+    Launch all the necessary nodes when recording data using the car mount.
+    Additoially it also provides a set of watchdog tools that will help you
+    monitor the recording process.
+  </description>
+  <maintainer email="ivizzo@uni-bonn.de">Ignacio Vizzo</maintainer>
+  <license>MIT</license>
+  <buildtool_depend>catkin</buildtool_depend>
+  <exec_depend>ouster_ros</exec_depend>
+  <exec_depend>pylon_camera_sync</exec_depend>
+  <exec_depend>nmea_navsat_driver</exec_depend>
+  <exec_depend>sbg_driver</exec_depend>
+  <exec_depend>ouster_ros</exec_depend>
+  <exec_depend>pylon_camera_sync</exec_depend>
+  <exec_depend>rviz</exec_depend>
+  <exec_depend>tf</exec_depend>
+  <exec_depend>robot_state_publisher</exec_depend>
+</package>

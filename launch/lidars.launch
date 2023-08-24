@@ -1,0 +1,43 @@
+<launch>
+  <!-- Shared arguments between LiDARs -->
+  <arg name="lidar_mode" value="2048x10"/>
+  <arg name="timestamp_mode" value="TIME_FROM_PTP_1588"/>
+  <arg name="udp_dest" value="192.168.1.100"/>
+  <arg name="udp_profile_lidar" value="RNG15_RFL8_NIR8"/>
+
+  <!-- Horizontal LiDAR -->
+  <include file="$(find ouster_ros)/launch/driver.launch">
+    <!-- sensor specific stuff -->
+    <arg name="imu_port" value="7505"/>
+    <arg name="lidar_port" value="7504"/>
+    <arg name="ouster_ns" value="os_h"/>
+    <arg name="sensor_hostname" value="192.168.1.13"/>
+
+    <!-- comon stuff -->
+    <arg name="lidar_mode" value="$(arg lidar_mode)"/>
+    <arg name="metadata" value="$(env ROS_CONFIG)/os_h.json"/>
+    <arg name="tf_prefix" value="hor"/>
+    <arg name="timestamp_mode" value="$(arg timestamp_mode)"/>
+    <arg name="udp_dest" value="$(arg udp_dest)"/>
+    <arg name="udp_profile_lidar" value="$(arg udp_profile_lidar)"/>
+    <arg name="viz" value="false"/>
+  </include>
+
+  <!-- Vertical LiDAR -->
+  <include file="$(find ouster_ros)/launch/driver.launch">
+    <!-- sensor specific stuff -->
+    <arg name="imu_port" value="7503"/>
+    <arg name="lidar_port" value="7502"/>
+    <arg name="ouster_ns" value="os_v"/>
+    <arg name="sensor_hostname" value="192.168.1.12"/>
+
+    <!-- comon stuff -->
+    <arg name="lidar_mode" value="$(arg lidar_mode)"/>
+    <arg name="metadata" value="$(env ROS_CONFIG)/os_v.json"/>
+    <arg name="tf_prefix" value="vert"/>
+    <arg name="timestamp_mode" value="$(arg timestamp_mode)"/>
+    <arg name="udp_dest" value="$(arg udp_dest)"/>
+    <arg name="udp_profile_lidar" value="$(arg udp_profile_lidar)"/>
+    <arg name="viz" value="false"/>
+  </include>
+</launch>

@@ -1,0 +1,11 @@
+<launch>
+    <!-- Record data streams to bag file. -->
+    <arg name="time_now"/>
+    <rosparam command="load" file="$(find ipb_car_launch)/config/topics_to_record.yaml" ns="/topics_to_record"/>
+    <node pkg="rosbag"
+        type="record"
+        name="rosbag_recorder"
+        args="record -O $(env ROS_BAGS)/$(arg time_now) --split --size=4000"
+        launch-prefix="/bin/bash -c '$* `rosparam get /topics_to_record`' --"/>
+    <rosparam command="dump" file="$(env ROS_CONFIG)/rosparams.yaml" />
+</launch>

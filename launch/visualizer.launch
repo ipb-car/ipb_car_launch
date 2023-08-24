@@ -1,0 +1,4 @@
+<?xml version="1.0"?>
+<launch>
+    <node name="ipb_car_visualizer" pkg="rviz" type="rviz" args="-d $(find ipb_car_launch)/config/ipb_car.rviz"/>
+</launch>

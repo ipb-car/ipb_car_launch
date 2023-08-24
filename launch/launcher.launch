@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<launch>
+    <include file="$(find ipb_car_launch)/launch/cameras.launch" />
+    <include file="$(find ipb_car_launch)/launch/lidars.launch" />
+    <include file="$(find ipb_car_launch)/launch/rpi_time.launch" />
+    <include file="$(find ipb_car_launch)/launch/urdf.launch" />
+    <!-- DO not include any launch after GPS because group machine propagates everywhere -->
+    <include file="$(find ipb_car_launch)/launch/gps_sbg.launch" />
+</launch>

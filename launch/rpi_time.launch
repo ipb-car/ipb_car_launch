@@ -1,0 +1,27 @@
+<launch>
+  <!--  chose if you want to run the rpi_time on the rpi or on your own system-->
+  <arg name="rpi" value="true" />
+  <!-- Output: `log` / `screen` -->
+  <arg name="output" value="screen" />
+
+  <group if="$(arg rpi)">
+    <!-- original env-loader -> env-loader="/opt/ros/melodic/env.sh" -->
+    <machine
+      name="raspberry-pi"
+      address="192.168.1.200"
+      user="pi-docker"
+      env-loader="/home/pi-docker/catkin_ws/devel/env.sh"
+      ssh-port="2222"
+      default="true"
+    />
+    <node name="rpi_time" pkg="rpi_time" type="rpi_time.py" output="$(arg output)">
+    </node>
+  </group>
+
+  <group unless="$(arg rpi)">
+    <node name="rpi_time" pkg="rpi_time" type="rpi_time.py" output="$(arg output)">
+    </node>
+  </group>
+
+</launch>
+
